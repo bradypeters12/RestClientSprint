@@ -25,11 +25,13 @@ public class RestClient {
         System.out.println();
         try {
             switch (request) {
+                //Make a selection
                 case "1" -> httpGetRequest();
                 case "2" -> httpPostRequest();
                 case "3" -> httpPutRequest();
                 default -> httpDeleteRequest();
             }
+            //Throw error if selecting isn't a valid number
         } catch (Exception e) {
             new Exception("Please select a valid number");
             e.printStackTrace();
@@ -37,7 +39,7 @@ public class RestClient {
     }
 
 
-
+    //Creating a get Request
 
     private static void httpGetRequest() {
         HttpClient client = HttpClient.newHttpClient();
@@ -52,23 +54,24 @@ public class RestClient {
             e.printStackTrace();
         }
     }
-
+//Creating a Post request
     private static void httpPostRequest() throws IOException, InterruptedException {
         Map<Object, Object> info = new HashMap<>();
+        //Info from person / member class
         info.put("firstName", "Brady");
         info.put("lastName", "Peters");
         info.put("address", "101 cannon cove");
         info.put("email", "example@hotmail.com");
         info.put("phone", "709-333-1134");
 
-
+    //Info from membership class
         info.put("Membership-duration", "4");
         info.put("Membership-type", "student");
         info.put("Current-tournament", "");
         info.put("Past-tournament", "");
         info.put("Future-tournament", "");
         info.put("MembershipStart-date", "01/04/2010");
-
+    //Info from findStandings class
         info.put("FinalStandings", "5th");
         info.put("Location", "Mile-one centre");
         info.put("Participation-members", "15");
@@ -92,7 +95,7 @@ public class RestClient {
             e.printStackTrace();
         }
     }
-
+//Creating a put request
     public static void httpPutRequest() throws IOException, InterruptedException {
         Map<Object, Object> info = new HashMap<>();
         info.put("firstName", "Brady");
@@ -135,7 +138,7 @@ public class RestClient {
             e.printStackTrace();
         }
     }
-
+//Creating a delete request
     public static void httpDeleteRequest() throws IOException, InterruptedException {
         try {
             HttpRequest request = HttpRequest.newBuilder(URI.create("http://localhost:8080/DeleteMember"))
