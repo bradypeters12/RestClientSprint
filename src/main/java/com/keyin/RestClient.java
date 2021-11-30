@@ -33,7 +33,7 @@ public class RestClient {
             }
             //Throw error if selecting isn't a valid number
         } catch (Exception e) {
-            new Exception("Please select a valid number");
+            new Exception("Please select a valid number from the list");
             e.printStackTrace();
         }
     }
